@@ -431,6 +431,9 @@ fn run() -> Result<()> {
 }
 
 fn main() {
+    use std::time::Instant;
+    let now = Instant::now();
+
     let result = run();
 
     if let Err(err) = result {
@@ -442,6 +445,7 @@ fn main() {
         eprintln!("Error: {err:?}");
         std::process::exit(1);
     }
+    println!("Duration: {:.2?}", now.elapsed());
 }
 
 #[derive(Clone, Copy, Debug, Default, Hash, Eq, Ord, PartialEq, PartialOrd)]
